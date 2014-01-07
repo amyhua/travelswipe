@@ -1,4 +1,4 @@
-<%= simple_form_for(@listing) do |f| %>
+<%= simple_form_for@listing, :html => { :multipart => true } do |f| %>
   <% if @listing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
@@ -15,6 +15,8 @@
 
   <%= f.association :category %>
   
+  <%= f.file_field :image %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

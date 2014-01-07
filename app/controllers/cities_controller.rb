@@ -15,6 +15,9 @@ class CitiesController < ApplicationController
   # GET /cities/new
   def new
     @city = City.new
+    for category in Category.all
+      cat_wt = @city.category_weights.build(category: category)
+    end
   end
 
   # GET /cities/1/edit
@@ -69,6 +72,6 @@ class CitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
-      params.require(:city).permit(:name)
+      params.require(:city).permit(:name, category_weights_attributes: [:weight, :category_id, :id])
     end
 end

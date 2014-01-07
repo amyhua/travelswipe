@@ -4,6 +4,9 @@
   <thead>
     <tr>
       <th>Name</th>
+      <% for category in Category.all %>
+        <th><%= category.name %></th>
+      <% end %>
       <th></th>
       <th></th>
       <th></th>
@@ -14,6 +17,9 @@
     <% @cities.each do |city| %>
       <tr>
         <td><%= city.name %></td>
+        <% for cat_wt in city.category_weights %>
+        <td><%= cat_wt.weight %></td>
+        <% end %>
         <td><%= link_to 'Show', city %></td>
         <td><%= link_to 'Edit', edit_city_path(city) %></td>
         <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,5 +29,5 @@
 </table>
 
 <br>
-
+<%= link_to 'Home', root_path %> | 
 <%= link_to 'New City', new_city_path %>

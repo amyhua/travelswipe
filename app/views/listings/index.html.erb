@@ -3,6 +3,9 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
+      <th>City</th>
+      <th>Category</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,6 +15,9 @@
   <tbody>
     <% @listings.each do |listing| %>
       <tr>
+        <td><%= image_tag listing.image.url(:medium) %></td>
+        <td><%= listing.city.name %></td>
+        <td><%= listing.category.name %></td>
         <td><%= link_to 'Show', listing %></td>
         <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
         <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +28,8 @@
 
 <br>
 
-<%= link_to 'New Listing', new_listing_path %>
+<%= link_to 'New City', new_city_path %><br>
+<%= link_to 'New Category', new_category_path %><br>
+Create cities and categories before creating listings:
+<%= link_to 'New Listing', new_listing_path %><br><br>
+

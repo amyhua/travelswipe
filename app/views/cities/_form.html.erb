@@ -13,9 +13,39 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name,placeholder: 'City, State/Province' %>
   </div>
+
+  <h3>Category Profile</h3>
+  <p>Categorize this city according to the various categories below. Weigh each category on a scale of 1 to 100. The SUM of all the weights given across all categories should be exactly 100.</p>
+
+  <%= f.simple_fields_for :category_weights do |b| %>
+    <div class="field">
+
+    <%= b.hidden_field :category_id %>
+    <%= b.object.category.name %>
+      <%= b.number_field :weight, class: 'to-sum' %>
+    </div>
+  <% end %>
+
+  <br>
+  SUM (SHOULD BE 100): <span id="sum"></span><br>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<script>
+function sumWeights(){
+  sum = 0
+  $.each($('.to-sum'), function(i,el){
+    num = Number($(el).val());
+    sum = sum + num
+  })
+  return sum
+}
+$('.to-sum').on('keyup',function(){
+  $('#sum').text(sumWeights());
+})
+</script>
