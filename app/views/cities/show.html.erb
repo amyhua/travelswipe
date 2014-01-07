@@ -6,7 +6,7 @@
 </p>
 
 <% for cat_wt in @city.category_weights %>
-	<%= cat_wt.category.name %> | <%= cat_wt.weight %>
+	<strong><%= cat_wt.category.name %></strong>: <%= cat_wt.weight %><br>
 <% end %>
 <p>
 
