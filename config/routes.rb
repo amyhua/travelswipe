@@ -1,4 +1,10 @@
 Travelswipeapi::Application.routes.draw do
+  resources :users
+
+  resources :listings
+
+  resources :categories
+
   resources :cities
 
   # The priority is based upon order of creation: first created -> highest priority.
